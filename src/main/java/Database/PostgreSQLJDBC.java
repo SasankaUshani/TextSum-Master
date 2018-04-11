@@ -1,7 +1,5 @@
 package Database;
 
-import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
-
 import java.sql.*;
 /**
  * Created by SasankaKudagoda on 3/20/18.
@@ -9,6 +7,7 @@ import java.sql.*;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 
 public class PostgreSQLJDBC {
@@ -41,7 +40,7 @@ public class PostgreSQLJDBC {
                     " NEWS TEXT NOT NULL, " +
                     " AUTHER TEXT , " +
                     " DATE TEXT , " +
-                    "SOURCE TEXT,"+
+                    "SOURCE TEXT," +
                     "CATEGORY TEXT NOT NULL" +
                     ")";
             stmt.executeUpdate(sql);
@@ -54,14 +53,14 @@ public class PostgreSQLJDBC {
         }
     }
 
-//    public void saveNews(StringBuilder news,String newsTitle, String image, String author, String date, String source, String category) {
-public void saveNews(StringBuilder news,String title) {
+        public void saveNews(StringBuilder news,String newsTitle, String image, String author, String date, String source, String category) {
+//    public void saveNews(StringBuilder news, String title) {
 
 
         try {
             stmt = connection.createStatement();
             String sql = "INSERT INTO TEXTSUM (USER_NAME,NEWSTITLE,IMAGE,NEWS,AUTHER, DATE, SOURCE, CATEGORY) "
-                    + "VALUES ('Sasanka','"+title+"', 'test image','testing news summary','test author', 'test date', 'test source', 'test category');";
+                    + "VALUES ('Sasanka','" + newsTitle + "', '"+image+"','sample news','"+author+"', '"+date+"', '"+source+"', '"+category+"');";
             stmt.executeUpdate(sql);
             stmt.close();
             connection.close();
@@ -74,27 +73,56 @@ public void saveNews(StringBuilder news,String title) {
     }
 
 
-    public void retreiveNews(int userID) {
+    public ArrayList<String> retreiveNews(int user_id) {
+        ArrayList<String> newsArticle = new ArrayList<>();
         try {
             stmt = connection.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT * FROM SUMMERIZEDNEWS WHERE ID=" + userID + ";");
+            ResultSet rs = stmt.executeQuery("SELECT * FROM TEXTSUM;");
             while (rs.next()) {
                 int id = rs.getInt("id");
                 String user_name = rs.getString("user_name");
                 String news = rs.getString("news");
+                String title = rs.getString("newstitle");
+                String source = rs.getString("source");
+                String image = rs.getString("image");
+                String date = rs.getString("date");
+                String author = rs.getString("auther");
 
                 System.out.println("ID = " + id);
                 System.out.println("USER_NAME = " + user_name);
                 System.out.println("NEWS = " + news);
+                System.out.println("TITLE = " + title);
+                System.out.println("SOURCE = " + source);
+                System.out.println("Image = " + image);
+                System.out.println("date = " + date);
+                System.out.println("Author = " + author);
+
+
+                newsArticle.add(user_name);
+                newsArticle.add(news);
+                newsArticle.add(title);
+                newsArticle.add(source);
+                newsArticle.add(image);
+                newsArticle.add(date);
+                newsArticle.add(author);
+
+
+
+
                 System.out.println();
-                stmt.close();
-                connection.close();
+
+
                 System.out.println("Data retreived successfully");
             }
+            stmt.close();
+            connection.close();
         } catch (Exception e) {
             System.err.println(e.getClass().getName() + ": " + e.getMessage());
             System.exit(0);
         }
+
+
+        return newsArticle;
     }
 
 }

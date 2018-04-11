@@ -28,35 +28,39 @@ public class Api_Client {
 
         ArrayList<StringBuilder> descriptionList = new ArrayList();
         Document document;
-        for (int i = 0; i < newsUrl.size(); i++) {
+        for (int i = 0; i < 15; i++) {
 //            System.setProperty("http.proxyHost", "112.135.4.4");
 //            System.setProperty("http.proxyPort", "8182");
             //create jsoup connection with user agent
-            Connection.Response response = Jsoup.connect((String) newsUrl.get(i))
-                    .ignoreContentType(true)
-                    .userAgent("Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:25.0) Gecko/20100101 Firefox/25.0")
-                    .referrer("http://www.google.com")
-                    .timeout(12000)
-                    .followRedirects(true)
-                    .execute();
+            System.out.println(newsUrl.get(i));
+            try {
+                Connection.Response response = Jsoup.connect((String) newsUrl.get(i))
+                        .ignoreContentType(true)
+                        .userAgent("Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:25.0) Gecko/20100101 Firefox/25.0")
+                        .referrer("http://www.google.com")
+                        .timeout(12000)
+                        .followRedirects(true)
+                        .execute();
 
 
-            document = response.parse();
-            String title = document.title();
-            Elements paragraphs = document.body().select("p");
-            StringBuilder content = new StringBuilder();
-            for (Element element : paragraphs) {
-                //removing advertisement tag
-                if (!element.text().equals("Advertisement") &&
-                        !element.text().contains("|") &&
-                        !element.text().contains(":") &&
-                        !(element.text().trim().split(" ").length == 1) &&
-                        !(element.text().trim().contains("Home Page"))) {
-                    content.append(element.text());
-                    content.append("\n");
+                document = response.parse();
+                Elements paragraphs = document.body().select("p");
+                StringBuilder content = new StringBuilder();
+                for (Element element : paragraphs) {
+                    //removing advertisement tag
+                    if (!element.text().equals("Advertisement") &&
+                            !element.text().contains("|") &&
+                            !element.text().contains(":") &&
+                            !(element.text().trim().split(" ").length == 1) &&
+                            !(element.text().trim().contains("Home Page"))) {
+                        content.append(element.text());
+                        content.append("\n");
+                    }
                 }
+                descriptionList.add(content);
+            }catch (Exception e){
+
             }
-            descriptionList.add(content);
         }
 
         return descriptionList;
@@ -105,11 +109,11 @@ public class Api_Client {
             } else {
                 imageURL = "https://www.staticwhich.co.uk/static/images/products/no-image/no-image-available.png";
             }
-            if(!responseObj.get("articles").getAsJsonArray().get(i).getAsJsonObject().get("publishedAt").isJsonNull()) {
+            if (!responseObj.get("articles").getAsJsonArray().get(i).getAsJsonObject().get("publishedAt").isJsonNull()) {
                 datePublished = responseObj.get("articles").getAsJsonArray().get(i).getAsJsonObject().get("publishedAt").getAsString();
 
-            }else{
-                datePublished="23/05/2018";
+            } else {
+                datePublished = "23/05/2018";
             }
             if (!responseObj.get("articles").getAsJsonArray().get(i).getAsJsonObject().get("author").isJsonNull()) {
                 author = responseObj.get("articles").getAsJsonArray().get(i).getAsJsonObject().get("author").getAsString();
@@ -126,15 +130,13 @@ public class Api_Client {
             authorList.add(author);
 
 
-
-
         }
         fileWriter.close();
         newsData.put("URL", urlList);
         newsData.put("TITLE", titleList);
         newsData.put("SOURCE", sourceList);
         newsData.put("IMAGE", imageList);
-        newsData.put("DATE",dateList);
+        newsData.put("DATE", dateList);
         newsData.put("AUTHOR", authorList);
 
 
