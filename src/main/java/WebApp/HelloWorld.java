@@ -1,5 +1,6 @@
 package WebApp;
 
+import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -15,15 +16,15 @@ import javax.json.JsonWriter;
 
 
 // The Java class will be hosted at the URI path "/helloworld"
-@Path("/helloworld")
+@Path("/getSummarizedNews")
 public class HelloWorld {
-    @GET
+
 //    @Produces("text/plain")
 //    public String getClichedMessage() {
 //        return "Coming from restAPI test test test";
 //    }
 
-
+    @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Response getClichedMessage() {
         JsonObject personObject = Json.createObjectBuilder()
@@ -40,8 +41,15 @@ public class HelloWorld {
                 )
                 .build();
 
-        return Response.status(200).entity(personObject.toString()).build();
+        return Response.status(200).header("Access-Control-Allow-Origin", "*").entity(personObject.toString()).build();
     }
+
+//    @GET
+//    @Path("/getScoredSentences")
+//    @Produces(MediaType.APPLICATION_JSON)
+//    public Response getScoredSentences(){
+//
+//    }
 
 
 }

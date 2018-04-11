@@ -9,12 +9,14 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.util.ArrayList;
 import java.util.Base64;
+import java.util.HashMap;
 
 import org.jsoup.Connection;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+
 /**
  * Created by SasankaKudagoda on 01/18/18.
  */
@@ -23,10 +25,12 @@ public class Api_Client {
     final static String SYNONYM_API_KEY = "777f01ece8859262a3ffe3413206df51";
 
     public static ArrayList<StringBuilder> getHTMLContent(ArrayList newsUrl) throws IOException, InterruptedException {
+
         ArrayList<StringBuilder> descriptionList = new ArrayList();
         Document document;
         for (int i = 0; i < newsUrl.size(); i++) {
-
+//            System.setProperty("http.proxyHost", "112.135.4.4");
+//            System.setProperty("http.proxyPort", "8182");
             //create jsoup connection with user agent
             Connection.Response response = Jsoup.connect((String) newsUrl.get(i))
                     .ignoreContentType(true)
@@ -36,8 +40,8 @@ public class Api_Client {
                     .followRedirects(true)
                     .execute();
 
+
             document = response.parse();
-            System.out.println("url - " + newsUrl.get(i));
             String title = document.title();
             Elements paragraphs = document.body().select("p");
             StringBuilder content = new StringBuilder();
@@ -53,32 +57,91 @@ public class Api_Client {
                 }
             }
             descriptionList.add(content);
-            System.out.println(descriptionList.get(0));
         }
 
         return descriptionList;
 
     }
 
-    public static ArrayList<String> getJsonContent(StringBuilder stringBuilder) throws IOException {
+    public static HashMap<String, ArrayList<String>> getJsonContent(StringBuilder stringBuilder) throws IOException {
         JsonParser jsonParser = new JsonParser();
         JsonObject responseObj = (JsonObject) jsonParser.parse(stringBuilder.toString());
         BufferedWriter fileWriter = new BufferedWriter(new FileWriter("News"));
         ArrayList<String> urlList = new ArrayList<>();
+        ArrayList<String> titleList = new ArrayList<>();
+        ArrayList<String> sourceList = new ArrayList<>();
+        ArrayList<String> imageList = new ArrayList<>();
+        ArrayList<String> dateList = new ArrayList<>();
+        ArrayList<String> authorList = new ArrayList<>();
+        HashMap<String, ArrayList<String>> newsData = new HashMap<>();
+
+
         for (int i = 0; i < responseObj.get("articles").getAsJsonArray().size(); i++) {
 
+
+            String title;
+            String source;
+            String imageURL;
+            String datePublished;
+            String author;
+
             String newsURL = responseObj.get("articles").getAsJsonArray().get(i).getAsJsonObject().get("url").getAsString();
-//            System.out.println("Json : " + newsURL);
-            fileWriter.write(newsURL);
-            fileWriter.write(" - ");
-            fileWriter.newLine();
+
+
+            if (!responseObj.get("articles").getAsJsonArray().get(i).getAsJsonObject().get("title").isJsonNull()) {
+                title = responseObj.get("articles").getAsJsonArray().get(i).getAsJsonObject().get("title").getAsString();
+            } else {
+                title = "Unknown";
+            }
+            if (!responseObj.get("articles").getAsJsonArray().get(i).getAsJsonObject().get("source").getAsJsonObject().get("name").isJsonNull()) {
+                source = responseObj.get("articles").getAsJsonArray().get(i).getAsJsonObject().get("source").getAsJsonObject().get("name").getAsString();
+
+            } else {
+                source = "Unknown";
+            }
+            if (!responseObj.get("articles").getAsJsonArray().get(i).getAsJsonObject().get("urlToImage").isJsonNull()) {
+                imageURL = responseObj.get("articles").getAsJsonArray().get(i).getAsJsonObject().get("urlToImage").getAsString();
+
+            } else {
+                imageURL = "https://www.staticwhich.co.uk/static/images/products/no-image/no-image-available.png";
+            }
+            if(!responseObj.get("articles").getAsJsonArray().get(i).getAsJsonObject().get("publishedAt").isJsonNull()) {
+                datePublished = responseObj.get("articles").getAsJsonArray().get(i).getAsJsonObject().get("publishedAt").getAsString();
+
+            }else{
+                datePublished="23/05/2018";
+            }
+            if (!responseObj.get("articles").getAsJsonArray().get(i).getAsJsonObject().get("author").isJsonNull()) {
+                author = responseObj.get("articles").getAsJsonArray().get(i).getAsJsonObject().get("author").getAsString();
+
+            } else {
+                author = "Unknown";
+            }
+
             urlList.add(newsURL);
+            titleList.add(title);
+            sourceList.add(source);
+            imageList.add(imageURL);
+            dateList.add(datePublished);
+            authorList.add(author);
+
+
+
+
         }
         fileWriter.close();
+        newsData.put("URL", urlList);
+        newsData.put("TITLE", titleList);
+        newsData.put("SOURCE", sourceList);
+        newsData.put("IMAGE", imageList);
+        newsData.put("DATE",dateList);
+        newsData.put("AUTHOR", authorList);
 
-        return urlList;
+
+        return newsData;
     }
 
+    //    public static
     public static StringBuilder httpClient(String endpoint, String authenticationKey) throws IOException {
         URL url = new URL(endpoint);
         URLConnection connection = url.openConnection();

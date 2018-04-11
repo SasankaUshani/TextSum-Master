@@ -12,7 +12,7 @@ import java.util.ArrayList;
 public class StopWordsRemover {
 
     public ArrayList<String> getStopWords() throws IOException, InterruptedException {
-        Path file = Paths.get("/Users/sasankakudagoda/Desktop/IIT/TextSum/Project/src/main/java", "TextFiles/Stopword.txt");
+        Path file = Paths.get("/Users/sasankakudagoda/Desktop/IIT/TextSum/TextSum Master/src/main/java/TextFiles/Stopword.txt");
         return (ArrayList<String>) Files.readAllLines(file, StandardCharsets.UTF_8);
     }
 }

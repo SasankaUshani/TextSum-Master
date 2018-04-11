@@ -13,7 +13,7 @@ import java.util.ArrayList;
 
 public class TrendingTopics {
     public ArrayList<String> getTrendingTopics() throws IOException, InterruptedException {
-        Path file = Paths.get("/Users/sasankakudagoda/Desktop/IIT/TextSum/FYP/src/main/java/TextFiles/Topics.txt");
+        Path file = Paths.get("/Users/sasankakudagoda/Desktop/IIT/TextSum/TextSum Master/src/main/java/TextFiles/Topics.txt");
         return (ArrayList<String>) Files.readAllLines(file, StandardCharsets.UTF_8);
     }
 }

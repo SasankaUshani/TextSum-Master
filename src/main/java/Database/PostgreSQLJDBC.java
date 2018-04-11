@@ -32,10 +32,18 @@ public class PostgreSQLJDBC {
     public void createTable() {
         try {
             stmt = connection.createStatement();
-            String sql = "CREATE TABLE SUMMERIZEDNEWS " +
-                    "(ID INT PRIMARY KEY     NOT NULL," +
-                    " USER_NAME           TEXT    NOT NULL, " +
-                    " NEWS            TEXT     NOT NULL)";
+
+            String sql = "CREATE TABLE TEXTSUM " +
+                    "(ID SERIAL PRIMARY KEY," +
+                    " USER_NAME TEXT NOT NULL, " +
+                    " NEWSTITLE TEXT NOT NULL," +
+                    " IMAGE TEXT , " +
+                    " NEWS TEXT NOT NULL, " +
+                    " AUTHER TEXT , " +
+                    " DATE TEXT , " +
+                    "SOURCE TEXT,"+
+                    "CATEGORY TEXT NOT NULL" +
+                    ")";
             stmt.executeUpdate(sql);
             stmt.close();
             connection.close();
@@ -46,13 +54,14 @@ public class PostgreSQLJDBC {
         }
     }
 
-    public void saveNews(StringBuilder news) {
+//    public void saveNews(StringBuilder news,String newsTitle, String image, String author, String date, String source, String category) {
+public void saveNews(StringBuilder news,String title) {
+
+
         try {
             stmt = connection.createStatement();
-            String sql = "INSERT INTO SUMMERIZEDNEWS (ID,USER_NAME,NEWS) "
-                    + "VALUES (1, 'Paul', 'Test paragraph insteted');";
-            //INSERT INTO SUMMERIZEDNEWS (ID,USER_NAME,NEWS) VALUES (1, 'Paul', 'news' );
-            // SELECT * FROM SUMMERIZEDNEWS WHERE ID = '1'
+            String sql = "INSERT INTO TEXTSUM (USER_NAME,NEWSTITLE,IMAGE,NEWS,AUTHER, DATE, SOURCE, CATEGORY) "
+                    + "VALUES ('Sasanka','"+title+"', 'test image','testing news summary','test author', 'test date', 'test source', 'test category');";
             stmt.executeUpdate(sql);
             stmt.close();
             connection.close();
@@ -64,10 +73,11 @@ public class PostgreSQLJDBC {
 
     }
 
+
     public void retreiveNews(int userID) {
         try {
             stmt = connection.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT * FROM SUMMERIZEDNEWS WHERE ID="+userID+";");
+            ResultSet rs = stmt.executeQuery("SELECT * FROM SUMMERIZEDNEWS WHERE ID=" + userID + ";");
             while (rs.next()) {
                 int id = rs.getInt("id");
                 String user_name = rs.getString("user_name");
