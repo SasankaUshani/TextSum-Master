@@ -29,9 +29,6 @@ public class Api_Client {
         ArrayList<StringBuilder> descriptionList = new ArrayList();
         Document document;
         for (int i = 0; i < 15; i++) {
-//            System.setProperty("http.proxyHost", "112.135.4.4");
-//            System.setProperty("http.proxyPort", "8182");
-            //create jsoup connection with user agent
             System.out.println(newsUrl.get(i));
             try {
                 Connection.Response response = Jsoup.connect((String) newsUrl.get(i))
@@ -70,6 +67,7 @@ public class Api_Client {
     public static HashMap<String, ArrayList<String>> getJsonContent(StringBuilder stringBuilder) throws IOException {
         JsonParser jsonParser = new JsonParser();
         JsonObject responseObj = (JsonObject) jsonParser.parse(stringBuilder.toString());
+
         BufferedWriter fileWriter = new BufferedWriter(new FileWriter("News"));
         ArrayList<String> urlList = new ArrayList<>();
         ArrayList<String> titleList = new ArrayList<>();

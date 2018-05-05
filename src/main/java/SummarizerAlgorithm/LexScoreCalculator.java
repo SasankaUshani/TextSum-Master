@@ -52,6 +52,7 @@ public class LexScoreCalculator {
         powerMethod(0.85);
         return lexScore;
     }
+
     private double[] powerMethod(double dampFactor) {
         double magDiff = 0.85;
         double size = (double) allSentences.size();

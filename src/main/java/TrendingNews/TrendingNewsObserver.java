@@ -45,7 +45,6 @@ public class TrendingNewsObserver {
                     ;
                 }
 
-
             }
         }
         printHashMap(topicOccurrence);

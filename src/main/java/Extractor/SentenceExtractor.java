@@ -38,15 +38,28 @@ public class SentenceExtractor {
 
 
             while (reMatcher.find()) {
-
+            Boolean addToSentence = false;
                 String[] tokenizedTerms = reMatcher.group().
                         replaceAll("[\\W&&[^\\s]]", "").split("\\W+");//to get individual terms
                 String sentence = reMatcher.group().toString();
+                for(int x=0;x<junkText.size();x++){
+                    if(sentence.equalsIgnoreCase(junkText.get(x))){
+                        System.out.println("junk text have "+junkText.get(x));
+                        addToSentence = false;
+                        break;
+                    }else{
+                        System.out.println("no junk tesxt found");
+                        addToSentence = true;
+                    }
+                }
 //                System.out.println(reMatcher.group().toString());
-
-                allSentences.add(tokenizedTerms);
-                allSentencesAsList.add(sentence);
-
+                if(addToSentence) {
+                    System.out.println("added");
+                    allSentences.add(tokenizedTerms);
+                    allSentencesAsList.add(sentence);
+                }else{
+                    System.out.println("not added "+sentence);
+                }
 
                 for (String term : tokenizedTerms) {
 //                        avoid duplicate entry & stop words

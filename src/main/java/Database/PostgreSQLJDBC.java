@@ -73,7 +73,7 @@ public class PostgreSQLJDBC {
     }
 
 
-    public ArrayList<String> retreiveNews(int user_id) {
+    public ArrayList<String> retreiveNews() {
         ArrayList<String> newsArticle = new ArrayList<>();
         try {
             stmt = connection.createStatement();
