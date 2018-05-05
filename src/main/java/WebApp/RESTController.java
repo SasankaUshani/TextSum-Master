@@ -18,10 +18,8 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
-import java.util.ArrayList;
-import java.util.Base64;
-import java.util.HashMap;
-import java.util.List;
+import java.sql.Time;
+import java.util.*;
 
 // The Java class will be hosted at the URI path "/helloworld"
 @Path("/getSummarizedNews")
@@ -30,6 +28,24 @@ public class RESTController {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Response getClichedMessage() throws JSONException, IOException, InterruptedException {
+
+
+        TimerTask task = new TimerTask() {
+            @Override
+            public void run() {
+                // task to run goes here
+                System.out.println("**********************Hello !!!");
+            }
+        };
+        Timer timer = new Timer();
+        long delay = 0;
+        long intevalPeriod = 5 * 10000;
+        // schedules the task to be run in an interval
+        timer.scheduleAtFixedRate(task, delay,
+                intevalPeriod);
+
+
+
 
         ArrayList sumarizedNews = new ArrayList();
         JSONObject jsonObject = new JSONObject();
@@ -51,6 +67,9 @@ public class RESTController {
 
     }
 
+    private  void print(){
+        System.out.println("*********** Called **************");
+    }
     private ArrayList<JsonObject> createJsonObject(ArrayList titles, ArrayList images, ArrayList source, ArrayList dates, ArrayList authors) {
         ArrayList<JsonObject> jsonArrayList = new ArrayList();
         for (int k = 0; k < titles.size(); k++) {
@@ -84,6 +103,7 @@ public class RESTController {
         ArrayList source = newsData.get("SOURCE");
         ArrayList dates = newsData.get("DATE");
         ArrayList authors = newsData.get("AUTHOR");
+
         ArrayList<JsonObject> additionalDetails =  createJsonObject(titles, images, source, dates, authors);
        ArrayList returnObject = new ArrayList();
        returnObject.add(urls);
