@@ -87,10 +87,10 @@ public class MainActivity {
             System.out.println("Summary : " + selectedSenetences);
 
 
-//            PostgreSQLJDBC postgreSQLJDBC = new PostgreSQLJDBC();
-//            postgreSQLJDBC.createConnection();
+            PostgreSQLJDBC postgreSQLJDBC = new PostgreSQLJDBC();
+            postgreSQLJDBC.createConnection();
 
-//            postgreSQLJDBC.createTable();
+            postgreSQLJDBC.createTable();
 //            String title = titles.get(i).toString();
 //            String image = images.get(i).toString();
 //            String newsSource = source.get(i).toString();

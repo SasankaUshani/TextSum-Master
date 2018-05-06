@@ -38,29 +38,33 @@ public class SentenceExtractor {
 
 
             while (reMatcher.find()) {
-            Boolean addToSentence = false;
+                Boolean addToSentence = false;
                 String[] tokenizedTerms = reMatcher.group().
                         replaceAll("[\\W&&[^\\s]]", "").split("\\W+");//to get individual terms
                 String sentence = reMatcher.group().toString();
-                for(int x=0;x<junkText.size();x++){
-                    if(sentence.equalsIgnoreCase(junkText.get(x))){
-                        System.out.println("junk text have "+junkText.get(x));
-                        addToSentence = false;
-                        break;
-                    }else{
-                        System.out.println("no junk tesxt found");
-                        addToSentence = true;
-                    }
-                }
-//                System.out.println(reMatcher.group().toString());
-                if(addToSentence) {
-                    System.out.println("added");
-                    allSentences.add(tokenizedTerms);
-                    allSentencesAsList.add(sentence);
-                }else{
-                    System.out.println("not added "+sentence);
-                }
+//                uncomment here to remove junk  FROM HERE
+//                for (int x = 0; x < junkText.size(); x++) {
+//                    if (sentence.equalsIgnoreCase(junkText.get(x))) {
+//                        System.out.println("junk text have " + junkText.get(x));
+//                        addToSentence = false;
+//                        break;
+//                    } else {
+//                        System.out.println("no junk tesxt found");
+//                        addToSentence = true;
+//                    }
+//                }
 
+//                if (addToSentence) {
+//                    System.out.println("added");
+//                    allSentences.add(tokenizedTerms);
+//                    allSentencesAsList.add(sentence);
+//                } else {
+//                    System.out.println("not added " + sentence);
+//                }
+                //                uncomment here to remove junk TO HERE
+
+                allSentences.add(tokenizedTerms);
+                allSentencesAsList.add(sentence);
                 for (String term : tokenizedTerms) {
 //                        avoid duplicate entry & stop words
                     if (!uniqueWords.contains(term) && !stopWords.contains(term.toLowerCase())) {

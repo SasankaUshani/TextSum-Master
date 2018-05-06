@@ -8,6 +8,8 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 
 public class PostgreSQLJDBC {
@@ -32,10 +34,10 @@ public class PostgreSQLJDBC {
         try {
             stmt = connection.createStatement();
 
-            String sql = "CREATE TABLE TEXTSUM " +
+            String sql = "CREATE TABLE TEXTSUM_MASTER_DB " +
                     "(ID SERIAL PRIMARY KEY," +
                     " USER_NAME TEXT NOT NULL, " +
-                    " NEWSTITLE TEXT NOT NULL," +
+                    " NEWSTITLE TEXT NOT NULL UNIQUE ," +
                     " IMAGE TEXT , " +
                     " NEWS TEXT NOT NULL, " +
                     " AUTHER TEXT , " +
@@ -53,31 +55,72 @@ public class PostgreSQLJDBC {
         }
     }
 
-        public void saveNews(StringBuilder news,String newsTitle, String image, String author, String date, String source, String category) {
-//    public void saveNews(StringBuilder news, String title) {
+    public Connection getConnection() {
+        return connection;
+    }
 
+    public void saveToDatabase(ArrayList summarizedNews, ArrayList titles, ArrayList images, ArrayList source, ArrayList dates, ArrayList authors) throws SQLException {
 
-        try {
-            stmt = connection.createStatement();
-            String sql = "INSERT INTO TEXTSUM (USER_NAME,NEWSTITLE,IMAGE,NEWS,AUTHER, DATE, SOURCE, CATEGORY) "
-                    + "VALUES ('Sasanka','" + newsTitle + "', '"+image+"','sample news','"+author+"', '"+date+"', '"+source+"', '"+category+"');";
-            stmt.executeUpdate(sql);
-            stmt.close();
-            connection.close();
-            System.out.println("News Inserted successfully");
-        } catch (Exception e) {
-            System.err.println(e.getClass().getName() + ": " + e.getMessage());
-            System.exit(0);
+//        createTable();
+        for (int i = 0; i < summarizedNews.size(); i++) {
+            createConnection();
+            String title = titles.get(i).toString();
+            String image = images.get(i).toString();
+            String newsSource = source.get(i).toString();
+            String date = dates.get(i).toString();
+            String author = authors.get(i).toString();
+            String summary = summarizedNews.get(i).toString();
+
+            Pattern pattern = Pattern.compile("'");
+            Matcher titleMatcher = pattern.matcher(title);
+            title = titleMatcher.replaceAll("^");
+
+            Matcher sourceMatcher = pattern.matcher(newsSource);
+            newsSource = sourceMatcher.replaceAll("^");
+
+            Matcher authorMatcher = pattern.matcher(author);
+            author = authorMatcher.replaceAll("^");
+
+            Matcher summaryMatcher = pattern.matcher(summary);
+            summary = summaryMatcher.replaceAll("^");
+            ////////////ADD THE SUMMARY AS THE FIRST PARAMETER!!!!!! IMPORTANT!!!
+//            postgreSQLJDBC.saveNews("testing", title, image, author, date, newsSource, "Political");
+            System.out.println("saving news number " + i);
+            try {
+                stmt = connection.createStatement();
+                String sql = "INSERT INTO TEXTSUM_MASTER_DB (USER_NAME,NEWSTITLE,IMAGE,NEWS,AUTHER, DATE, SOURCE, CATEGORY) "
+                        + "VALUES ('Sasanka','" + title + "', '" + image + "','" + summary + "','" + author + "', '" + date + "', '" + newsSource + "', '" + "Political" + "')on conflict (NEWSTITLE) do nothing;";
+                stmt.executeUpdate(sql);
+                stmt.close();
+                connection.close();
+                System.out.println("************ News Inserted successfully ****************");
+            } catch (Exception e) {
+
+                System.out.println("Cannot insert!!!" + e);
+                System.err.println(e.getClass().getName() + ": " + e.getMessage());
+                System.exit(0);
+                continue;
+
+            }
         }
-
     }
 
 
-    public ArrayList<String> retreiveNews() {
+
+
+
+    public ArrayList<ArrayList> retreiveNews() {
+        createConnection();
         ArrayList<String> newsArticle = new ArrayList<>();
+        ArrayList<String> titles = new ArrayList<>();
+        ArrayList<String> images = new ArrayList<>();
+        ArrayList<String> sources = new ArrayList<>();
+        ArrayList<String> dates = new ArrayList<>();
+        ArrayList<String> authors = new ArrayList<>();
+        ArrayList<ArrayList> response = new ArrayList<>();
         try {
             stmt = connection.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT * FROM TEXTSUM;");
+            ResultSet rs = stmt.executeQuery("SELECT * FROM TEXTSUM_MASTER_DB;");
             while (rs.next()) {
                 int id = rs.getInt("id");
                 String user_name = rs.getString("user_name");
@@ -98,18 +141,19 @@ public class PostgreSQLJDBC {
                 System.out.println("Author = " + author);
 
 
-                newsArticle.add(user_name);
                 newsArticle.add(news);
-                newsArticle.add(title);
-                newsArticle.add(source);
-                newsArticle.add(image);
-                newsArticle.add(date);
-                newsArticle.add(author);
+                titles.add(title);
+                sources.add(source);
+                images.add(image);
+                dates.add(date);
+                authors.add(author);
 
-
-
-
-                System.out.println();
+                response.add(newsArticle);
+                response.add(titles);
+                response.add(sources);
+                response.add(images);
+                response.add(dates);
+                response.add(authors);
 
 
                 System.out.println("Data retreived successfully");
@@ -122,7 +166,7 @@ public class PostgreSQLJDBC {
         }
 
 
-        return newsArticle;
+        return response;
     }
 
 }
