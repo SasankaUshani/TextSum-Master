@@ -131,14 +131,14 @@ public class PostgreSQLJDBC {
                 String date = rs.getString("date");
                 String author = rs.getString("auther");
 
-                System.out.println("ID = " + id);
-                System.out.println("USER_NAME = " + user_name);
-                System.out.println("NEWS = " + news);
-                System.out.println("TITLE = " + title);
-                System.out.println("SOURCE = " + source);
-                System.out.println("Image = " + image);
-                System.out.println("date = " + date);
-                System.out.println("Author = " + author);
+//                System.out.println("ID = " + id);
+//                System.out.println("USER_NAME = " + user_name);
+//                System.out.println("NEWS = " + news);
+//                System.out.println("TITLE = " + title);
+//                System.out.println("SOURCE = " + source);
+//                System.out.println("Image = " + image);
+//                System.out.println("date = " + date);
+//                System.out.println("Author = " + author);
 
 
                 newsArticle.add(news);

@@ -29,19 +29,32 @@ public class RESTController {
     public Response getClichedMessage() throws JSONException, IOException, InterruptedException, SQLException {
 ///**************uncomment for the timer HERE
 
-//        TimerTask task = new TimerTask() {
-//            @Override
-//            public void run() {
-//                // task to run goes here
-//                System.out.println("**********************Hello !!!");
-//            }
-//        };
-//        Timer timer = new Timer();
-//        long delay = 0;
-//        long intevalPeriod = 5 * 10000;
-//        // schedules the task to be run in an interval
-//        timer.scheduleAtFixedRate(task, delay,
-//                intevalPeriod);
+        TimerTask task = new TimerTask() {
+            @Override
+            public void run() {
+                // task to run goes here
+                print();
+            }
+        };
+        Timer timer = new Timer();
+        long delay = 0;
+        long intevalPeriod = 50 * 10000;
+        // schedules the task to be run in an interval
+        timer.scheduleAtFixedRate(task, delay,
+                intevalPeriod);
+
+        TimerTask task2 = new TimerTask() {
+            @Override
+            public void run() {
+                print2();
+            }
+        };
+        Timer timer2 = new Timer();
+        long delay2 = 100;
+        long intevalPeriod2 = 100 * 100000;
+        // schedules the task to be run in an interval
+        timer2.scheduleAtFixedRate(task2, 0,
+                60000);
 
 ///**************uncomment for the timer TO HERE
 
@@ -62,7 +75,13 @@ public class RESTController {
 
     }
 
+    private void print() {
+        System.out.println("**********************Hello  FROM 1111111111!!!");
+    }
 
+    private void print2() {
+        System.out.println("**********************Hello  FOMR 2222222222!!!");
+    }
 
     private ArrayList<JsonObject> createJsonObject(ArrayList<ArrayList> otherDetails) {
         ArrayList<JsonObject> jsonArrayList = new ArrayList();
@@ -84,7 +103,7 @@ public class RESTController {
                     .add("source", sources.get(k).toString())
                     .add("date", dates.get(k).toString())
                     .add("author", authors.get(k).toString())
-                    .add("summary",summary.get(k).toString())
+                    .add("summary", summary.get(k).toString())
                     .build();
             jsonArrayList.add(additionalDetails);
         }
@@ -110,8 +129,6 @@ public class RESTController {
         returnObject.add(newsData);
         return newsData;
     }
-
-
 
 
     private ArrayList getNews() throws IOException, InterruptedException, SQLException {

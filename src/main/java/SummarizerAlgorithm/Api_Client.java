@@ -166,6 +166,10 @@ public class Api_Client {
     }
 
 
+
+
+
+
     public static void synonym(String word) throws IOException {
         StringBuilder builder =
                 httpClient("http://words.bighugelabs.com/api/2/" + SYNONYM_API_KEY + "/" + word + "/json", null);
