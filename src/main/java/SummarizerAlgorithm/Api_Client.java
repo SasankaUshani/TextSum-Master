@@ -7,10 +7,14 @@ import com.google.gson.JsonParser;
 import java.io.*;
 import java.net.URL;
 import java.net.URLConnection;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.Base64;
 import java.util.HashMap;
+import java.util.List;
 
+import com.ibm.watson.developer_cloud.natural_language_understanding.v1.NaturalLanguageUnderstanding;
+import com.ibm.watson.developer_cloud.natural_language_understanding.v1.model.*;
 import org.jsoup.Connection;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -23,6 +27,7 @@ import org.jsoup.select.Elements;
 
 public class Api_Client {
     final static String SYNONYM_API_KEY = "777f01ece8859262a3ffe3413206df51";
+    final static String AlCHMEY_API_KEY = "IsXLt8lcA0PZLaSSrIY2SfgBGim6tesxqnxQNvqPYDSm";
 
     public static ArrayList<StringBuilder> getHTMLContent(ArrayList newsUrl) throws IOException, InterruptedException {
 
@@ -55,7 +60,7 @@ public class Api_Client {
                     }
                 }
                 descriptionList.add(content);
-            }catch (Exception e){
+            } catch (Exception e) {
 
             }
         }
@@ -141,7 +146,6 @@ public class Api_Client {
         return newsData;
     }
 
-    //    public static
     public static StringBuilder httpClient(String endpoint, String authenticationKey) throws IOException {
         URL url = new URL(endpoint);
         URLConnection connection = url.openConnection();
@@ -166,27 +170,40 @@ public class Api_Client {
     }
 
 
+    public static List<EntitiesResult> getExtractedEntities(String phrase) throws IOException {
+        NaturalLanguageUnderstanding service = new NaturalLanguageUnderstanding(
+                "2018-03-16",
+                "e0d43a04-6901-4cbc-8652-bd6dad5886cb",
+                "eYrsjmHIcY3s"
+        );
 
 
+        EntitiesOptions entitiesOptions = new EntitiesOptions.Builder()
+                .emotion(true)
+                .sentiment(true)
+                .limit(10)
+                .build();
+        KeywordsOptions keywordsOptions = new KeywordsOptions.Builder()
+                .emotion(true)
+                .sentiment(true)
+                .limit(10)
+                .build();
 
+        Features features = new Features.Builder()
+                .entities(entitiesOptions)
+                .keywords(keywordsOptions)
+                .build();
 
-    public static void synonym(String word) throws IOException {
-        StringBuilder builder =
-                httpClient("http://words.bighugelabs.com/api/2/" + SYNONYM_API_KEY + "/" + word + "/json", null);
-        JsonParser jsonParser = new JsonParser();
-        try {
-            JsonObject responseObj = (JsonObject) jsonParser.parse(builder.toString());
+        AnalyzeOptions parameters = new AnalyzeOptions.Builder()
+                .text(phrase)
+                .features(features)
+                .build();
 
-
-            JsonObject verbObj = responseObj.get("verb").getAsJsonObject();
-            JsonArray synArray = verbObj.get("syn").getAsJsonArray();
-
-            for (int i = 0; i < synArray.size(); i++) {
-                System.out.println("synonym " + i + " :" + synArray.get(i));
-
-            }
-
-        } catch (NullPointerException e) {
-        }
+        AnalysisResults response = service
+                .analyze(parameters)
+                .execute();
+        return response.getEntities();
     }
+
+
 }
