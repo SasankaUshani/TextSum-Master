@@ -2,16 +2,16 @@ package WebApp;
 
 import Database.PostgreSQLJDBC;
 import Models.Sentence;
+import SummarizerAlgorithm.AbstractiveSummarizer;
 import SummarizerAlgorithm.Api_Client;
 import SummarizerAlgorithm.SentenceScoreCalculator;
+import TrendingNews.TrendingNewsObserver;
 import org.codehaus.jettison.json.JSONException;
 import org.codehaus.jettison.json.JSONObject;
 
 import javax.json.Json;
 import javax.json.JsonObject;
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.io.IOException;
@@ -29,50 +29,73 @@ public class RESTController {
     public Response getClichedMessage() throws JSONException, IOException, InterruptedException, SQLException {
 ///**************uncomment for the timer HERE
 
-        TimerTask task = new TimerTask() {
-            @Override
-            public void run() {
-                // task to run goes here
-                print();
-            }
-        };
-        Timer timer = new Timer();
-        long delay = 0;
-        long intevalPeriod = 50 * 10000;
-        // schedules the task to be run in an interval
-        timer.scheduleAtFixedRate(task, delay,
-                intevalPeriod);
-
-        TimerTask task2 = new TimerTask() {
-            @Override
-            public void run() {
-                print2();
-            }
-        };
-        Timer timer2 = new Timer();
-        long delay2 = 100;
-        long intevalPeriod2 = 100 * 100000;
-        // schedules the task to be run in an interval
-        timer2.scheduleAtFixedRate(task2, 0,
-                60000);
+//        TimerTask task = new TimerTask() {
+//            @Override
+//            public void run() {
+//                // task to run goes here
+//                print();
+//            }
+//        };
+//        Timer timer = new Timer();
+//        long delay = 0;
+//        long intevalPeriod = 50 * 10000;
+//        // schedules the task to be run in an interval
+//        timer.scheduleAtFixedRate(task, delay,
+//                intevalPeriod);
+//
+//        TimerTask task2 = new TimerTask() {
+//            @Override
+//            public void run() {
+//                print2();
+//            }
+//        };
+//        Timer timer2 = new Timer();
+//        long delay2 = 100;
+//        long intevalPeriod2 = 100 * 100000;
+//        // schedules the task to be run in an interval
+//        timer2.scheduleAtFixedRate(task2, 0,
+//                60000);
 
 ///**************uncomment for the timer TO HERE
 
-        ArrayList sumarizedNews = new ArrayList();
+
         JSONObject jsonObject = new JSONObject();
-        sumarizedNews = getNews();
+//        fetch news from api
+//        getNews();
 
 //      retreive news from the database
         PostgreSQLJDBC postgreSQLJDBC = new PostgreSQLJDBC();
         ArrayList<ArrayList> response = postgreSQLJDBC.retreiveNews();
         ArrayList<JsonObject> additionalDetails = createJsonObject(response);
 
-        for (int i = 0; i < additionalDetails.size(); i++) {
-            jsonObject.put("newsDetails" + i, additionalDetails.get(i));
-        }
+//        for (int i = 0; i < additionalDetails.size(); i++) {
+//            jsonObject.put("newsDetails" + i, additionalDetails.get(i));
+//        }
+
+
+        jsonObject.put("news",additionalDetails);
+
+//      abstractive summary
+//        String abstractiveSummary = generateAbtractiveSummarization();
+//        jsonObject.put("AbstractiveSummary", abstractiveSummary);
+////       generate graph
+        HashMap trendingNews = generateGraph();
+        jsonObject.put("trendingNews",trendingNews);
+
 
         return Response.status(200).header("Access-Control-Allow-Origin", "*").entity(jsonObject.toString()).build();
 
+    }
+
+    private String generateAbtractiveSummarization() throws IOException {
+        AbstractiveSummarizer abstractiveSummarizer = new AbstractiveSummarizer();
+        return abstractiveSummarizer.generateAbstractiveSummary();
+    }
+
+    private HashMap generateGraph() {
+        TrendingNewsObserver trendingNewsObserver = new TrendingNewsObserver();
+        HashMap trendingNews = trendingNewsObserver.calculateWordOccurance();
+        return trendingNews;
     }
 
     private void print() {
@@ -89,16 +112,18 @@ public class RESTController {
 
         ArrayList<String> summary = otherDetails.get(0);
         ArrayList<String> titles = otherDetails.get(1);
-        ArrayList<String> sources = otherDetails.get(2);
-        ArrayList<String> images = otherDetails.get(3);
-        ArrayList<String> dates = otherDetails.get(4);
-        ArrayList<String> authors = otherDetails.get(5);
+        ArrayList<String> urls = otherDetails.get(2);
+        ArrayList<String> sources = otherDetails.get(3);
+        ArrayList<String> images = otherDetails.get(4);
+        ArrayList<String> dates = otherDetails.get(5);
+        ArrayList<String> authors = otherDetails.get(6);
 
 
 //        create the json object
         for (int k = 0; k < titles.size(); k++) {
             JsonObject additionalDetails = Json.createObjectBuilder()
                     .add("title", titles.get(k).toString())
+                    .add("url", urls.get(k).toString())
                     .add("image", images.get(k).toString())
                     .add("source", sources.get(k).toString())
                     .add("date", dates.get(k).toString())
@@ -124,6 +149,7 @@ public class RESTController {
         HashMap<String, ArrayList<String>> newsData = api_client.getJsonContent(response);
 
         ArrayList urls = newsData.get("URL");
+
         ArrayList returnObject = new ArrayList();
         returnObject.add(urls);
         returnObject.add(newsData);
@@ -160,7 +186,7 @@ public class RESTController {
             }
             summarizedNews.add(selectedSenetences);
         }
-
+        ArrayList url = newsData.get("URL");
         ArrayList titles = newsData.get("TITLE");
         ArrayList images = newsData.get("IMAGE");
         ArrayList source = newsData.get("SOURCE");
@@ -169,7 +195,7 @@ public class RESTController {
 
 //        save to database
         PostgreSQLJDBC postgreSQLJDBC = new PostgreSQLJDBC();
-        postgreSQLJDBC.saveToDatabase(summarizedNews, titles, images, source, dates, authors);
+        postgreSQLJDBC.saveToDatabase(url, summarizedNews, titles, images, source, dates, authors);
         return summarizedNews;
     }
 }

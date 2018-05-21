@@ -37,6 +37,7 @@ public class PostgreSQLJDBC {
             String sql = "CREATE TABLE TEXTSUM_MASTER_DB " +
                     "(ID SERIAL PRIMARY KEY," +
                     " USER_NAME TEXT NOT NULL, " +
+                    " URL TEXT NOT NULL, " +
                     " NEWSTITLE TEXT NOT NULL UNIQUE ," +
                     " IMAGE TEXT , " +
                     " NEWS TEXT NOT NULL, " +
@@ -59,11 +60,12 @@ public class PostgreSQLJDBC {
         return connection;
     }
 
-    public void saveToDatabase(ArrayList summarizedNews, ArrayList titles, ArrayList images, ArrayList source, ArrayList dates, ArrayList authors) throws SQLException {
+    public void saveToDatabase(ArrayList url, ArrayList summarizedNews, ArrayList titles, ArrayList images, ArrayList source, ArrayList dates, ArrayList authors) throws SQLException {
 
 //        createTable();
         for (int i = 0; i < summarizedNews.size(); i++) {
             createConnection();
+            String urls = url.get(i).toString();
             String title = titles.get(i).toString();
             String image = images.get(i).toString();
             String newsSource = source.get(i).toString();
@@ -88,8 +90,8 @@ public class PostgreSQLJDBC {
             System.out.println("saving news number " + i);
             try {
                 stmt = connection.createStatement();
-                String sql = "INSERT INTO TEXTSUM_MASTER_DB (USER_NAME,NEWSTITLE,IMAGE,NEWS,AUTHER, DATE, SOURCE, CATEGORY) "
-                        + "VALUES ('Sasanka','" + title + "', '" + image + "','" + summary + "','" + author + "', '" + date + "', '" + newsSource + "', '" + "Political" + "')on conflict (NEWSTITLE) do nothing;";
+                String sql = "INSERT INTO TEXTSUM_MASTER_DB (USER_NAME,URL,NEWSTITLE,IMAGE,NEWS,AUTHER, DATE, SOURCE, CATEGORY) "
+                        + "VALUES ('Sasanka','"+ urls + "', '" + title + "', '" + image + "','" + summary + "','" + author + "', '" + date + "', '" + newsSource + "', '" + "Political" + "')on conflict (NEWSTITLE) do nothing;";
                 stmt.executeUpdate(sql);
                 stmt.close();
                 connection.close();
@@ -113,6 +115,7 @@ public class PostgreSQLJDBC {
         createConnection();
         ArrayList<String> newsArticle = new ArrayList<>();
         ArrayList<String> titles = new ArrayList<>();
+        ArrayList<String> urls = new ArrayList<>();
         ArrayList<String> images = new ArrayList<>();
         ArrayList<String> sources = new ArrayList<>();
         ArrayList<String> dates = new ArrayList<>();
@@ -124,6 +127,7 @@ public class PostgreSQLJDBC {
             while (rs.next()) {
                 int id = rs.getInt("id");
                 String user_name = rs.getString("user_name");
+                String url = rs.getString("url");
                 String news = rs.getString("news");
                 String title = rs.getString("newstitle");
                 String source = rs.getString("source");
@@ -142,6 +146,7 @@ public class PostgreSQLJDBC {
 
 
                 newsArticle.add(news);
+                urls.add(url);
                 titles.add(title);
                 sources.add(source);
                 images.add(image);
@@ -150,6 +155,7 @@ public class PostgreSQLJDBC {
 
                 response.add(newsArticle);
                 response.add(titles);
+                response.add(urls);
                 response.add(sources);
                 response.add(images);
                 response.add(dates);

@@ -57,13 +57,6 @@ public class MainActivity {
         System.out.println("HTML!!!!");
         System.out.println(descriptions.get(0));
 
-        //retreiving json response from the hashset of arrays
-//        ArrayList titles = newsData.get("TITLE");
-//        ArrayList images = newsData.get("IMAGE");
-//        ArrayList source = newsData.get("SOURCE");
-//        ArrayList dates = newsData.get("DATE");
-//        ArrayList authors = newsData.get("AUTHOR");
-
 
 
         for (int i = 0; i < descriptions.size(); i++) {
@@ -78,48 +71,20 @@ public class MainActivity {
                 } else {
 //                    summerized news as a paragraph
                     selectedSenetences.append(sentence.getSentenceValue() + "\n");
+
                     incrementer++;
                 }
+
 
             }
 
             System.out.println("********************************");
-            System.out.println("Summary : " + selectedSenetences);
+            System.out.println("Summary "+i+" : " + selectedSenetences);
 
 
-            PostgreSQLJDBC postgreSQLJDBC = new PostgreSQLJDBC();
-            postgreSQLJDBC.createConnection();
-
-            postgreSQLJDBC.createTable();
-//            String title = titles.get(i).toString();
-//            String image = images.get(i).toString();
-//            String newsSource = source.get(i).toString();
-//            String date = dates.get(i).toString();
-//            String author = authors.get(i).toString();
-//
-//            Pattern pattern = Pattern.compile("'");
-//            Matcher titleMatcher = pattern.matcher(title);
-//            title = titleMatcher.replaceAll("^");
-//
-//            Matcher sourceMatcher = pattern.matcher(newsSource);
-//            newsSource = sourceMatcher.replaceAll("^");
-
-//            Matcher authorMatcher = pattern.matcher(author);
-//            author = authorMatcher.replaceAll("^");
-//
-//            System.out.println("title :" + i + " : " + title);
-//            postgreSQLJDBC.saveNews(selectedSenetences, title, image, author, date, newsSource, category);
-//            postgreSQLJDBC.retreiveNews();
-//            System.out.println("----------------------------------------");
-
-//            URL url = new URL("http://www.google.com/search?q=mkyong");
-//            HttpURLConnection con = (HttpURLConnection) url.openConnection();
-//            con.setRequestMethod("GET");
-//            System.out.println("HHTP ");
-//            System.out.println(con);
         }
-//        TrendingNewsObserver trendingNewsObserver = new TrendingNewsObserver();
-//        trendingNewsObserver.calculateWordOccurance(descriptions);
+        TrendingNewsObserver trendingNewsObserver = new TrendingNewsObserver();
+        trendingNewsObserver.calculateWordOccurance(descriptions);
     }
 }
 

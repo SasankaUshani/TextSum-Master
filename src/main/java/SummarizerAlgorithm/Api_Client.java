@@ -1,17 +1,14 @@
 package SummarizerAlgorithm;
 
-import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
 import java.io.*;
 import java.net.URL;
 import java.net.URLConnection;
-import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.Base64;
 import java.util.HashMap;
-import java.util.List;
 
 import com.ibm.watson.developer_cloud.natural_language_understanding.v1.NaturalLanguageUnderstanding;
 import com.ibm.watson.developer_cloud.natural_language_understanding.v1.model.*;
@@ -170,7 +167,7 @@ public class Api_Client {
     }
 
 
-    public static List<EntitiesResult> getExtractedEntities(String phrase) throws IOException {
+    public static AnalysisResults getExtractedEntities(String phrase) throws IOException {
         NaturalLanguageUnderstanding service = new NaturalLanguageUnderstanding(
                 "2018-03-16",
                 "e0d43a04-6901-4cbc-8652-bd6dad5886cb",
@@ -184,9 +181,9 @@ public class Api_Client {
                 .limit(10)
                 .build();
         KeywordsOptions keywordsOptions = new KeywordsOptions.Builder()
-                .emotion(true)
+                .emotion(false)
                 .sentiment(true)
-                .limit(10)
+                .limit(20)
                 .build();
 
         Features features = new Features.Builder()
@@ -202,7 +199,7 @@ public class Api_Client {
         AnalysisResults response = service
                 .analyze(parameters)
                 .execute();
-        return response.getEntities();
+        return response;
     }
 
 
