@@ -12,7 +12,7 @@ import java.util.ArrayList;
 public class JunkWordsRemover {
 
     public ArrayList<String> getJunkWords() throws IOException, InterruptedException {
-        Path file = Paths.get("/Users/sasankakudagoda/Desktop/IIT/TextSum/TextSum Master/src/main/java/TextFiles/JunkText.txt");
+        Path file = Paths.get("/Users/rashmendis/Documents/MyDocs/IIT/Sasanka/TextSum-Master/src/main/java/TextFiles/JunkText.txt");
         return (ArrayList<String>) Files.readAllLines(file, StandardCharsets.UTF_8);
     }
 }

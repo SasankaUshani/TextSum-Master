@@ -62,6 +62,7 @@ public class RESTController {
         JSONObject jsonObject = new JSONObject();
 //        fetch news from api
 //        getNews();
+        generateAbtractiveSummarization();
 
 //      retreive news from the database
         PostgreSQLJDBC postgreSQLJDBC = new PostgreSQLJDBC();
@@ -175,7 +176,7 @@ public class RESTController {
             StringBuilder selectedSenetences = new StringBuilder();
 
             for (Sentence sentence : scoredSenetences) {
-                if (incrementer == 20) {
+                if (incrementer == 10) {
                     break;
                 } else {
 //                    summerized news as a paragraph

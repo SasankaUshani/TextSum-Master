@@ -21,8 +21,8 @@ public class PostgreSQLJDBC {
         try {
             Class.forName("org.postgresql.Driver");
             connection = DriverManager
-                    .getConnection("jdbc:postgresql://localhost:5000/Test",
-                            "postgres", "9080");
+                    .getConnection("jdbc:postgresql://localhost:5433/Test",
+                            "postgres", "123");
             System.out.println("Opened database successfully");
         } catch (Exception e) {
             System.err.println(e.getClass().getName() + ": " + e.getMessage());

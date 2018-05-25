@@ -32,9 +32,9 @@ public class MainActivity {
 
 
         //        uncomment this to fetch news
-        StringBuilder response = api_client.httpClient(endpoint, NEWS_API_KEY);
-        HashMap<String, ArrayList<String>> newsData = api_client.getJsonContent(response);
-        ArrayList urls = newsData.get("URL");
+//        StringBuilder response = api_client.httpClient(endpoint, NEWS_API_KEY);
+//        HashMap<String, ArrayList<String>> newsData = api_client.getJsonContent(response);
+//        ArrayList urls = newsData.get("URL");
 
 
 //        ArrayList urls = new ArrayList();
@@ -53,20 +53,29 @@ public class MainActivity {
 //        urls.add("http://fortune.com/2018/04/11/soylent-meal-replacement-drinks-walmart/");
 //        urls.add("https://www.bloomberg.com/news/articles/2018-04-11/jpmorgan-sued-over-cash-advance-fees-for-cryptocurrency-buys");
 //        urls.add("http://www.sacbee.com/news/state/california/article208596279.html");
-        ArrayList<StringBuilder> descriptions = api_client.getHTMLContent(urls);
-        System.out.println("HTML!!!!");
-        System.out.println(descriptions.get(0));
+//        ArrayList<StringBuilder> descriptions = api_client.getHTMLContent(urls);
+//        System.out.println("HTML!!!!");
+//        System.out.println(descriptions.get(0));
 
 
 
-        for (int i = 0; i < descriptions.size(); i++) {
-            SentenceScoreCalculator sentenceScoreCalculator = new SentenceScoreCalculator(descriptions.get(i));
+
+//        for (int i = 0; i < descriptions.size(); i++) {
+        ArrayList<StringBuilder> descriptions = new ArrayList();
+            StringBuilder stringBuilder = new StringBuilder("J.C. Penney CEO Marvin Ellison is quitting the 116-year-old department store chain after three years to become CEO of home-improvement retailer Lowe's, and on Tuesday he called it a \"gut-wrenching decision.\" \n" +
+                    "\n" +
+                    "Ellison made a 3.5-minute video for employees in which he talked about them and the progress the company has made. He said that the Lowe's job was \"a once-in-a-lifetime opportunity\" for him to become CEO of a $70 billion-a-year company. He also said that he didn't seek out the job. \n" +
+                    "\n" +
+                    "Ellison said he understands if employees are disappointed in him for leaving, but he believes that Penney has improved, modernized and has a strong leadership team. \n" +
+                    "\n");
+            descriptions.add(stringBuilder);
+            SentenceScoreCalculator sentenceScoreCalculator = new SentenceScoreCalculator(descriptions.get(0));
             List<Sentence> scoredSenetences = sentenceScoreCalculator.getScoredSenetences();
             int incrementer = 0;
             StringBuilder selectedSenetences = new StringBuilder();
 
             for (Sentence sentence : scoredSenetences) {
-                if (incrementer == 10) {
+                if (incrementer == 3) {
                     break;
                 } else {
 //                    summerized news as a paragraph
@@ -79,12 +88,12 @@ public class MainActivity {
             }
 
             System.out.println("********************************");
-            System.out.println("Summary "+i+" : " + selectedSenetences);
+            System.out.println("Summary " + selectedSenetences);
 
 
-        }
-        TrendingNewsObserver trendingNewsObserver = new TrendingNewsObserver();
-        trendingNewsObserver.calculateWordOccurance(descriptions);
+//        }
+//        TrendingNewsObserver trendingNewsObserver = new TrendingNewsObserver();
+//        trendingNewsObserver.calculateWordOccurance(descriptions);
     }
 }
 
