@@ -21,8 +21,8 @@ public class PostgreSQLJDBC {
         try {
             Class.forName("org.postgresql.Driver");
             connection = DriverManager
-                    .getConnection("jdbc:postgresql://localhost:5433/Test",
-                            "postgres", "123");
+                    .getConnection("jdbc:postgresql://localhost:5432/test",
+                            "postgres", "9080");
             System.out.println("Opened database successfully");
         } catch (Exception e) {
             System.err.println(e.getClass().getName() + ": " + e.getMessage());
@@ -56,9 +56,6 @@ public class PostgreSQLJDBC {
         }
     }
 
-    public Connection getConnection() {
-        return connection;
-    }
 
     public void saveToDatabase(ArrayList url, ArrayList summarizedNews, ArrayList titles, ArrayList images, ArrayList source, ArrayList dates, ArrayList authors) throws SQLException {
 
@@ -85,8 +82,6 @@ public class PostgreSQLJDBC {
 
             Matcher summaryMatcher = pattern.matcher(summary);
             summary = summaryMatcher.replaceAll("^");
-            ////////////ADD THE SUMMARY AS THE FIRST PARAMETER!!!!!! IMPORTANT!!!
-//            postgreSQLJDBC.saveNews("testing", title, image, author, date, newsSource, "Political");
             System.out.println("saving news number " + i);
             try {
                 stmt = connection.createStatement();
@@ -134,15 +129,6 @@ public class PostgreSQLJDBC {
                 String image = rs.getString("image");
                 String date = rs.getString("date");
                 String author = rs.getString("auther");
-
-//                System.out.println("ID = " + id);
-//                System.out.println("USER_NAME = " + user_name);
-//                System.out.println("NEWS = " + news);
-//                System.out.println("TITLE = " + title);
-//                System.out.println("SOURCE = " + source);
-//                System.out.println("Image = " + image);
-//                System.out.println("date = " + date);
-//                System.out.println("Author = " + author);
 
 
                 newsArticle.add(news);

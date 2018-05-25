@@ -27,6 +27,8 @@ public class RESTController {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Response getClichedMessage() throws JSONException, IOException, InterruptedException, SQLException {
+        String originalText = "The cricket match between Sri Lanka and England was held last Saturday at Colombo. Both teams gave a great fight till the last innings and Kumar Sangakkar managed to score 153. Kumar Sangakkar became the man of the match. England won the match by 30 runs.\n";
+
 ///**************uncomment for the timer HERE
 
 //        TimerTask task = new TimerTask() {
@@ -62,24 +64,19 @@ public class RESTController {
         JSONObject jsonObject = new JSONObject();
 //        fetch news from api
 //        getNews();
-        generateAbtractiveSummarization();
 
 //      retreive news from the database
         PostgreSQLJDBC postgreSQLJDBC = new PostgreSQLJDBC();
         ArrayList<ArrayList> response = postgreSQLJDBC.retreiveNews();
         ArrayList<JsonObject> additionalDetails = createJsonObject(response);
-
-//        for (int i = 0; i < additionalDetails.size(); i++) {
-//            jsonObject.put("newsDetails" + i, additionalDetails.get(i));
-//        }
-
-
         jsonObject.put("news",additionalDetails);
 
 //      abstractive summary
-//        String abstractiveSummary = generateAbtractiveSummarization();
-//        jsonObject.put("AbstractiveSummary", abstractiveSummary);
-////       generate graph
+        String abstractiveSummary = generateAbtractiveSummarization();
+        jsonObject.put("AbstractiveText", abstractiveSummary);
+        jsonObject.put("OriginalText",originalText);
+
+        //       generate graph
         HashMap trendingNews = generateGraph();
         jsonObject.put("trendingNews",trendingNews);
 
@@ -88,9 +85,10 @@ public class RESTController {
 
     }
 
-    private String generateAbtractiveSummarization() throws IOException {
+    private String generateAbtractiveSummarization(){
         AbstractiveSummarizer abstractiveSummarizer = new AbstractiveSummarizer();
-        return abstractiveSummarizer.generateAbstractiveSummary();
+        String originalText = "The cricket match between Sri Lanka and England was held last Saturday at Colombo. Both teams gave a great fight till the last innings and Kumar Sangakkar managed to score 153. Kumar Sangakkar became the man of the match. England won the match by 30 runs.\n";
+        return abstractiveSummarizer.generateAbstractiveSummary(originalText);
     }
 
     private HashMap generateGraph() {
@@ -123,7 +121,7 @@ public class RESTController {
 //        create the json object
         for (int k = 0; k < titles.size(); k++) {
             JsonObject additionalDetails = Json.createObjectBuilder()
-                    .add("title", titles.get(k).toString())
+                    .add("title", titles.get(k))
                     .add("url", urls.get(k).toString())
                     .add("image", images.get(k).toString())
                     .add("source", sources.get(k).toString())

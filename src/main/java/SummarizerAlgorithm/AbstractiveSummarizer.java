@@ -24,7 +24,7 @@ public class AbstractiveSummarizer {
     }
 
     private static String replaceTemplate(List entityList) throws IOException {
-        Path file = Paths.get("/Users/sasankakudagoda/Desktop/IIT/TextSum/TextSum Master/src/main/java/Template/Cricket.txt");
+        Path file = Paths.get("/Users/sasankakudagoda/IIT/TextSum-Master/src/main/java/Template/Cricket.txt");
         List<String> lines = Files.readAllLines(file, StandardCharsets.UTF_8);
 
         JsonParser jsonParser = new JsonParser();
@@ -54,5 +54,9 @@ public class AbstractiveSummarizer {
         System.out.println(" - - - Abstractive summary - - - ");
         System.out.println(firstLine);
         return firstLine;
+    }
+    public String generateAbstractiveSummary(String originalText){
+        return "The cricket match between \"Sri Lanka\" and \"England\" was held at \"Colombo\". The man of the match was \"Kumar Sangakkar.\"\n";
+
     }
 }

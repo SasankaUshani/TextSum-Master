@@ -3,12 +3,8 @@ package Main;
 import Database.PostgreSQLJDBC;
 import Models.Sentence;
 import SummarizerAlgorithm.Api_Client;
-import SummarizerAlgorithm.SentenceScoreCalculator;
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import com.ibm.watson.developer_cloud.http.ServiceCall;
-import com.ibm.watson.developer_cloud.natural_language_understanding.v1.NaturalLanguageUnderstanding;
 import com.ibm.watson.developer_cloud.natural_language_understanding.v1.model.*;
 import org.codehaus.jettison.json.JSONException;
 
@@ -36,16 +32,12 @@ public class ExecuteTextSum {
         AnalysisResults response = api_client.getExtractedEntities(sampleNews1);
         List entityList = response.getEntities();
         replaceTemplate(entityList);
-//        List keywordList = response.getKeywords();
-//        for (int i = 0; i < entityList.size(); i++) {
-//            System.out.println("keyword " + i + " " + keywordList.get(i));
-//        }
 
 
     }
 
     private static void replaceTemplate(List entityList) throws IOException {
-        Path file = Paths.get("/Users/sasankakudagoda/Desktop/IIT/TextSum/TextSum Master/src/main/java/Template/Cricket.txt");
+        Path file = Paths.get("/Users/sasankakudagoda/IIT/TextSum-Master/src/main/java/Template/Cricket.txt");
         List<String> lines = Files.readAllLines(file, StandardCharsets.UTF_8);
 
         JsonParser jsonParser = new JsonParser();

@@ -86,9 +86,6 @@ public class SentenceExtractor {
 
     }
 
-//    }
-
-
     public List<String[]> getAllWordsInDescription() {
         return this.allWordsInDescription;
     }

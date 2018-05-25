@@ -57,5 +57,6 @@
     <orderEntry type="library" name="Maven: com.ibm.watson.developer_cloud:text-to-speech:5.1.1" level="project" />
     <orderEntry type="library" name="Maven: com.ibm.watson.developer_cloud:tone-analyzer:5.1.1" level="project" />
     <orderEntry type="library" name="Maven: com.ibm.watson.developer_cloud:visual-recognition:5.1.1" level="project" />
+    <orderEntry type="library" name="postgresql-42.2.2" level="project" />
   </component>
 </module>
