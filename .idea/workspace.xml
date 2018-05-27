@@ -8,31 +8,12 @@
   <component name="ChangeListManager">
     <list default="true" id="605643ee-18c7-41a1-b5e7-72951b80c8e1" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TextSum Master.iml" beforeDir="false" afterPath="$PROJECT_DIR$/TextSum Master.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/TextSum_Master_war_exploded/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/TextSum_Master_war_exploded/META-INF/MANIFEST.MF" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/TextSum_Master_war_exploded/WEB-INF/classes/Database/PostgreSQLJDBC.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/TextSum_Master_war_exploded/WEB-INF/classes/Database/PostgreSQLJDBC.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/TextSum_Master_war_exploded/WEB-INF/classes/Preprocessor/JunkWordsRemover.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/TextSum_Master_war_exploded/WEB-INF/classes/Preprocessor/JunkWordsRemover.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/TextSum_Master_war_exploded/WEB-INF/classes/Preprocessor/StopWordsRemover.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/TextSum_Master_war_exploded/WEB-INF/classes/Preprocessor/StopWordsRemover.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/TextSum_Master_war_exploded/WEB-INF/classes/Preprocessor/TrendingTopics.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/TextSum_Master_war_exploded/WEB-INF/classes/Preprocessor/TrendingTopics.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/TextSum_Master_war_exploded/WEB-INF/classes/SummarizerAlgorithm/AbstractiveSummarizer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/TextSum_Master_war_exploded/WEB-INF/classes/SummarizerAlgorithm/AbstractiveSummarizer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/TextSum_Master_war_exploded/WEB-INF/classes/WebApp/RESTController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/TextSum_Master_war_exploded/WEB-INF/classes/WebApp/RESTController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Database/PostgreSQLJDBC.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Database/PostgreSQLJDBC.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Extractor/SentenceExtractor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Extractor/SentenceExtractor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Main/ExecuteTextSum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main/ExecuteTextSum.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Main/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main/MainActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Preprocessor/JunkWordsRemover.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Preprocessor/JunkWordsRemover.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Preprocessor/StopWordsRemover.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Preprocessor/StopWordsRemover.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Preprocessor/TrendingTopics.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Preprocessor/TrendingTopics.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/SummarizerAlgorithm/AbstractiveSummarizer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/SummarizerAlgorithm/AbstractiveSummarizer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/WebApp/RESTController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/WebApp/RESTController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/TextSum_Master_war_exploded/WEB-INF/classes/Extractor/SentenceExtractor.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/TextSum_Master_war_exploded/WEB-INF/classes/Extractor/SentenceExtractor.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/TextSum_Master_war_exploded/WEB-INF/classes/Preprocessor/TrendingTopics.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Database/PostgreSQLJDBC.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Database/PostgreSQLJDBC.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Preprocessor/JunkWordsRemover.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Preprocessor/JunkWordsRemover.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Preprocessor/StopWordsRemover.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Preprocessor/StopWordsRemover.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Preprocessor/TrendingTopics.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Preprocessor/TrendingTopics.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/SummarizerAlgorithm/AbstractiveSummarizer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/SummarizerAlgorithm/AbstractiveSummarizer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/WebApp/RESTController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Extractor/SentenceExtractor.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Extractor/SentenceExtractor.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Preprocessor/TrendingTopics.class" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -70,53 +51,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="MainActivity.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Main/MainActivity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="32" column="29" lean-forward="true" selection-start-line="32" selection-start-column="29" selection-end-line="32" selection-end-column="29" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="RESTController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/WebApp/RESTController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="87">
-              <caret line="90" column="43" lean-forward="true" selection-start-line="90" selection-start-column="43" selection-end-line="90" selection-end-column="43" />
+            <state relative-caret-position="178">
+              <caret line="66" lean-forward="true" selection-start-line="66" selection-end-line="66" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TrendingNewsObserver.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/TrendingNews/TrendingNewsObserver.java">
+      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2295">
-              <caret line="157" column="43" selection-start-line="157" selection-start-column="43" selection-end-line="157" selection-end-column="43" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ExecuteTextSum.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Main/ExecuteTextSum.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="7" selection-start-line="7" selection-end-line="7" />
-              <folding>
-                <marker date="1527232998071" expanded="true" signature="692:831" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AbstractiveSummarizer.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/SummarizerAlgorithm/AbstractiveSummarizer.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="167">
-              <caret line="58" column="142" selection-start-line="58" selection-start-column="142" selection-end-line="58" selection-end-column="142" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="-538">
+              <caret line="16" column="40" selection-start-line="16" selection-start-column="40" selection-end-line="16" selection-end-column="40" />
             </state>
           </provider>
         </entry>
@@ -130,38 +78,20 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PostgreSQLJDBC.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Database/PostgreSQLJDBC.java">
+      <file leaf-file-name="CentroidScoreCalculator.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/SummarizerAlgorithm/CentroidScoreCalculator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="227">
-              <caret line="163" column="1" lean-forward="true" selection-start-line="163" selection-start-column="1" selection-end-line="163" selection-end-column="1" />
+            <state relative-caret-position="-60">
+              <caret line="9" column="34" selection-start-line="9" selection-start-column="34" selection-end-line="9" selection-end-column="34" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="StopWordsRemover.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Preprocessor/StopWordsRemover.java">
+      <file leaf-file-name="SentenceScoreCalculator.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/SummarizerAlgorithm/SentenceScoreCalculator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="14" column="109" selection-start-line="14" selection-start-column="109" selection-end-line="14" selection-end-column="109" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TrendingTopics.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Preprocessor/TrendingTopics.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="15" column="107" selection-start-line="15" selection-start-column="107" selection-end-line="15" selection-end-column="107" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SentenceExtractor.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Extractor/SentenceExtractor.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="141">
-              <caret line="87" lean-forward="true" selection-start-line="87" selection-end-line="87" />
+            <state relative-caret-position="146">
+              <caret line="27" column="37" selection-start-line="27" selection-start-column="37" selection-end-line="27" selection-end-column="37" />
             </state>
           </provider>
         </entry>
@@ -177,8 +107,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>createTable</find>
-      <find>system.</find>
       <find>system.out</find>
       <find>hello</find>
       <find>2222222222</find>
@@ -207,6 +135,8 @@
       <find>topics.t</find>
       <find>trendingnews.tx</find>
       <find>cricket.</find>
+      <find>thresh</find>
+      <find>0.1</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -236,10 +166,10 @@
         <option value="$PROJECT_DIR$/src/main/java/Preprocessor/TrendingTopics.java" />
         <option value="$PROJECT_DIR$/src/main/java/Main/ExecuteTextSum.java" />
         <option value="$PROJECT_DIR$/src/main/java/Main/MainActivity.java" />
-        <option value="$PROJECT_DIR$/src/main/java/WebApp/RESTController.java" />
         <option value="$PROJECT_DIR$/src/main/java/SummarizerAlgorithm/AbstractiveSummarizer.java" />
         <option value="$PROJECT_DIR$/src/main/java/Database/PostgreSQLJDBC.java" />
         <option value="$PROJECT_DIR$/src/main/java/Extractor/SentenceExtractor.java" />
+        <option value="$PROJECT_DIR$/src/main/java/WebApp/RESTController.java" />
       </list>
     </option>
   </component>
@@ -269,9 +199,9 @@
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds">
     <option name="y" value="23" />
-    <option name="width" value="1680" />
+    <option name="width" value="1280" />
     <option name="height" value="739" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -346,6 +276,22 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="Models" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="TextSumMaster" type="b2602c69:ProjectViewProjectNode" />
+              <item name="TextSum-Master" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="Preprocessor" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="TextSumMaster" type="b2602c69:ProjectViewProjectNode" />
+              <item name="TextSum-Master" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="SummarizerAlgorithm" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -379,16 +325,6 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="WebApp" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TextSumMaster" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TextSum-Master" type="462c0819:PsiDirectoryNode" />
-              <item name="target" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TextSumMaster" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TextSum-Master" type="462c0819:PsiDirectoryNode" />
-              <item name="web" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="TextSumMaster" type="b2602c69:ProjectViewProjectNode" />
@@ -700,12 +636,12 @@
       <workItem from="1526975524685" duration="4515000" />
       <workItem from="1527221183188" duration="5257000" />
       <workItem from="1527230273761" duration="2697000" />
-      <workItem from="1527233260350" duration="7198000" />
+      <workItem from="1527233260350" duration="11735000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="175172000" />
+    <option name="totallyTimeSpent" value="179709000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -718,7 +654,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="739" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.411147" side_tool="true" weight="0.40030676" />
@@ -741,11 +676,12 @@
       <window_info anchor="bottom" id="Java Enterprise" order="7" weight="0.32668713" />
       <window_info anchor="right" id="Capture Analysis" order="3" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.3297546" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.588853" visible="true" weight="0.4330218" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.588853" weight="0.4330218" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.32875264" />
       <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.82678986" visible="true" weight="0.28984374" />
       <window_info anchor="right" id="Bean Validation" order="4" />
       <window_info id="Web" order="2" sideWeight="0.17321016" side_tool="true" weight="0.25305125" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32866043" />
       <window_info anchor="right" id="Theme Preview" order="3" />
       <window_info id="Favorites" order="2" sideWeight="0.50808316" side_tool="true" weight="0.25367048" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
@@ -755,7 +691,6 @@
       <window_info anchor="right" id="SciView" order="5" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.3297546" />
     </layout>
     <layout-to-restore>
       <window_info anchor="bottom" id="Application Servers" order="8" weight="0.3297546" />
@@ -892,20 +827,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Models/Word.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="570">
-          <caret line="60" column="27" selection-start-line="60" selection-start-column="16" selection-end-line="60" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/SummarizerAlgorithm/CentroidScoreCalculator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/SummarizerAlgorithm/CosineSimilarity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="615">
@@ -932,9 +853,6 @@
     <entry file="jar://$MAVEN_REPOSITORY$/com/google/code/gson/gson/2.2.4/gson-2.2.4.jar!/com/google/gson/annotations/SerializedName.class" />
     <entry file="jar://$MAVEN_REPOSITORY$/com/ibm/watson/developer_cloud/natural-language-understanding/5.1.1/natural-language-understanding-5.1.1.jar!/com/ibm/watson/developer_cloud/natural_language_understanding/v1/model/AnalysisResults.class" />
     <entry file="file://$PROJECT_DIR$/src/main/java/SummarizerAlgorithm/TemplateBased.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/TextFiles/TrendingNews.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/com/ibm/watson/developer_cloud/natural-language-understanding/5.1.1/natural-language-understanding-5.1.1.jar!/com/ibm/watson/developer_cloud/natural_language_understanding/v1/NaturalLanguageUnderstanding.class" />
     <entry file="file://$PROJECT_DIR$/News">
       <provider selected="true" editor-type-id="text-editor" />
@@ -942,24 +860,10 @@
     <entry file="jar://$MAVEN_REPOSITORY$/com/ibm/watson/developer_cloud/natural-language-understanding/5.1.1/natural-language-understanding-5.1.1-sources.jar!/com/ibm/watson/developer_cloud/natural_language_understanding/v1/NaturalLanguageUnderstanding.java" />
     <entry file="jar://$MAVEN_REPOSITORY$/com/ibm/watson/developer_cloud/natural-language-understanding/5.1.1/natural-language-understanding-5.1.1-sources.jar!/com/ibm/watson/developer_cloud/natural_language_understanding/v1/model/AnalysisResults.java" />
     <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home/src.zip!/java/util/HashMap.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/WebApp/MyApplication.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="15" selection-start-line="15" selection-end-line="16" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/SummarizerAlgorithm/TFIDFCalculator.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-31">
           <caret line="26" column="27" selection-start-line="26" selection-start-column="27" selection-end-line="26" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/SummarizerAlgorithm/SentenceScoreCalculator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="675">
-          <caret line="53" column="21" selection-start-line="53" selection-start-column="21" selection-end-line="53" selection-end-column="21" />
         </state>
       </provider>
     </entry>
@@ -988,13 +892,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="40" selection-start-line="16" selection-start-column="40" selection-end-line="16" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/SummarizerAlgorithm/Api_Client.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="190">
@@ -1012,10 +909,52 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/TextFiles/Stopword.txt">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Preprocessor/StopWordsRemover.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/SummarizerAlgorithm/AbstractiveSummarizer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="14" column="109" selection-start-line="14" selection-start-column="109" selection-end-line="14" selection-end-column="109" />
+        <state relative-caret-position="445">
+          <caret line="58" column="142" selection-start-line="58" selection-start-column="142" selection-end-line="58" selection-end-column="142" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Database/PostgreSQLJDBC.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="505">
+          <caret line="163" column="1" lean-forward="true" selection-start-line="163" selection-start-column="1" selection-end-line="163" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Extractor/SentenceExtractor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="400">
+          <caret line="87" lean-forward="true" selection-start-line="87" selection-end-line="87" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Main/ExecuteTextSum.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-290">
+          <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <marker date="1527232998071" expanded="true" signature="692:831" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Main/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-85">
+          <caret line="32" column="29" lean-forward="true" selection-start-line="32" selection-start-column="29" selection-end-line="32" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Models/Word.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="18" column="5" lean-forward="true" selection-start-line="18" selection-start-column="5" selection-end-line="26" selection-end-column="5" />
         </state>
       </provider>
     </entry>
@@ -1026,44 +965,41 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/TextFiles/TrendingNews.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Preprocessor/StopWordsRemover.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="14" column="109" selection-start-line="14" selection-start-column="109" selection-end-line="14" selection-end-column="109" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/TrendingNews/TrendingNewsObserver.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2295">
+        <state relative-caret-position="1142">
           <caret line="157" column="43" selection-start-line="157" selection-start-column="43" selection-end-line="157" selection-end-column="43" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Main/ExecuteTextSum.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/WebApp/MyApplication.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" selection-start-line="7" selection-end-line="7" />
-          <folding>
-            <marker date="1527232998071" expanded="true" signature="692:831" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Main/MainActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="32" column="29" lean-forward="true" selection-start-line="32" selection-start-column="29" selection-end-line="32" selection-end-column="29" />
+        <state relative-caret-position="240">
+          <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/WebApp/RESTController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="87">
-          <caret line="90" column="43" lean-forward="true" selection-start-line="90" selection-start-column="43" selection-end-line="90" selection-end-column="43" />
+        <state relative-caret-position="178">
+          <caret line="66" lean-forward="true" selection-start-line="66" selection-end-line="66" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/SummarizerAlgorithm/AbstractiveSummarizer.java">
+    <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="167">
-          <caret line="58" column="142" selection-start-line="58" selection-start-column="142" selection-end-line="58" selection-end-column="142" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="-538">
+          <caret line="16" column="40" selection-start-line="16" selection-start-column="40" selection-end-line="16" selection-end-column="40" />
         </state>
       </provider>
     </entry>
@@ -1074,17 +1010,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Database/PostgreSQLJDBC.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/SummarizerAlgorithm/CentroidScoreCalculator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="227">
-          <caret line="163" column="1" lean-forward="true" selection-start-line="163" selection-start-column="1" selection-end-line="163" selection-end-column="1" />
+        <state relative-caret-position="-60">
+          <caret line="9" column="34" selection-start-line="9" selection-start-column="34" selection-end-line="9" selection-end-column="34" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Extractor/SentenceExtractor.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/SummarizerAlgorithm/SentenceScoreCalculator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="141">
-          <caret line="87" lean-forward="true" selection-start-line="87" selection-end-line="87" />
+        <state relative-caret-position="146">
+          <caret line="27" column="37" selection-start-line="27" selection-start-column="37" selection-end-line="27" selection-end-column="37" />
         </state>
       </provider>
     </entry>
